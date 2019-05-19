@@ -1,0 +1,9 @@
+线程间通信：多个线程并发执行时，默认情况下CPU是随机性的在线程之间切换的，但是有时候我们希望他们能有规律的执行，那么多线程之间就需要协调
+           通信来改变或控制CPU的随机性，java提供了等待唤醒机制来解决这个问题，具体来说就是多个线程依靠一个同步锁，然后借助wait()和notify()
+           方法就可以实现线程间的协调通信。
+           同步锁相当于中间人作用，多个线程必须用同一个同步锁(认识同一个中间人),只有同一个锁上的被等待的线程，才可以持有该锁的另一个线程唤醒
+           。使用不同锁的线程之间不能相互唤醒，也就是无法协调通信
+           public final void wait();当前线程释放锁
+           public final native void wait(long timeout);当前线程释放锁，并等待xx毫秒
+           public final native void notify();唤醒持有通一锁的某个线程
+           public final native void notifyAll();唤醒持有通一锁的所有线程
